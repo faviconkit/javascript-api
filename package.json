@@ -1,0 +1,81 @@
+{
+  "name": "@faviconkit/api",
+  "description": "Get and embed high quality Favicons from any web site with this simple, reliable API.",
+  "version": "0.0.0",
+  "main": "./src/api.js",
+  "author": {
+    "name": "Andreas Pizsa",
+    "url": "https://faviconkit.com"
+  },
+  "keywords": [
+    "favicon",
+    "icon"
+  ],
+  "dependencies": {
+    "md5": "^2.3.0",
+    "ms": "^2.1.3"
+  },
+  "devDependencies": {
+    "@andreaspizsa/eslint-config-xo": "^0.2.1",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@shopify/eslint-plugin": "^41.2.0",
+    "ava": "^4.1.0",
+    "c8": "^7.11.0",
+    "chance": "^1.1.8",
+    "dotenv": "^16.0.0",
+    "got": "^12.0.3",
+    "husky": "^7.0.4",
+    "parcel": "^2.4.1",
+    "semantic-release": "^19.0.2",
+    "standard-version": "^9.3.2",
+    "tsd": "^0.20.0",
+    "type-fest": "^2.12.2",
+    "typescript": "^4.6.3",
+    "xo": "^0.48.0"
+  },
+  "files": [
+    "src/*"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "prepublishOnly": "npm test",
+    "pretest": "xo && tsd",
+    "test": "c8 ava"
+  },
+  "license": "MIT",
+  "ava": {
+    "require": [
+      "dotenv/config"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "overrides": {
+    "@graphql-tools/url-loader": ">=7.4.3",
+    "underscore": ">1.12.0"
+  },
+  "tsd": {
+    "directory": "test"
+  },
+  "type": "module",
+  "types": "./src/api.d.ts",
+  "xo": {
+    "extends": [
+      "@andreaspizsa/eslint-config-xo",
+      "plugin:@shopify/node"
+    ],
+    "rules": {
+      "@typescript-eslint/semi": 0
+    },
+    "semi": false
+  }
+}
