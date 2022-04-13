@@ -12,33 +12,27 @@
 
 Here are some of its fabulous features:
 
-+ 🖼 **\<img src="faviconkit">.**
-     Embed Favicons just like ordinary images.
-+ ✅ **Always 200 OK.**
-     Never a broken link image; if things go wrong, there’ll be a afallback icon
-+ 🖥 **Brilliant on every device.**
-     Always returns the best image format that works great with your platform (like .png, .svg or .jpeg)
-+ 💎 **HDPI Favicons.**
-     Supports all icon sizes from 16 to 1024 pixels and beyond, which makes your app look brilliant on high resolution displays!
-+ 📦 **Unpacks .ico files.** 
-     We unpack all icon sizes contained in `.ico` files and convert them to PNGs.
-+ 🤓 **Compatible.** 
-     Detects favico.ico, Apple Touch icons, web app manifest, social media profile icons, app icons and many more sources.
-+ 🕶 **Privacy Compliant.**
-     Shield users from leaving unwanted fingerprints on hundreds of web sites.
-+ 🏎 **Hyperfast.**
-     Loads icons in way under a second, grabs new ones in less than two.
+### Favicon Kit Features
+|    |                              |                                    |
+|----|------------------------------|------------------------------------|
+| 🖼 | \<img src="faviconkit">       | Embed Favicons just like ordinary images. |
+| ✅ | Always 200 OK                 | Never shows a broken link image – if things go wrong, you get a fallback icon. |
+| 💎 | Brilliant HDPI Favicons       | Supports all available icon sizes, from 16 to 1024 pixels and beyond, which makes your app look brilliant on high resolution displays. |
+| 📦 | Unpacks .ico files            | We unpack all icon sizes contained in `.ico` files and convert them to PNGs.|
+| 🤓 | Compatible                    | Detects favico.ico, Apple Touch icons, web app manifest, social media profile icons, app icons and many more sources |
+| 🕶 | Privacy Compliant             | Shield users from leaving unwanted fingerprints on hundreds of web sites |
+| 🏎 | Hyperfast                     | Delivers icons in way under a second, in most cases grabs new icons in less than two.
 
-# Installation & Usage
+# API Installation & Usage
+
+## Get your free Favicon Kit Account ID
+
+No password needed: [sign up or log in to your Dashboard](https://faviconkit.com/?ref=readme) to get your own free account ID.
 
 ## Add Favicon Kit to your project
 ```sh
 npm add @faviconkit/api
 ```
-
-## Get your free Favicon Kit Account ID
-
-[Sign up or log in to your Dashboard](https://faviconkit.com/) to get your own free account ID.
 
 ## Get a Favicon URL
 
@@ -52,3 +46,5 @@ const faviconkit = createFaviconKitApi({
 const githubIconUrl = faviconkit.iconUrl('https://github.com', 64)
 // -> https://MY-FAVICONKIT-ACCOUNT.faviconkit.com/github.com/64
 ```
+
+Voilá, Favicons!
