@@ -84,6 +84,7 @@
     "rules": {
       "@typescript-eslint/semi": 0
     },
-    "semi": false
+    "semi": false,
+    "space": 2
   }
 }

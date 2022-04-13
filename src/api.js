@@ -35,11 +35,11 @@ export const md5Base64 = input => btoa(md5(input, {asString: true}))
  * @returns unix timestamp
  */
 export const durationOrTimestampToSeconds = (
-	stringOrNumber,
-	startSeconds = Math.floor(Date.now() / 1000),
+  stringOrNumber,
+  startSeconds = Math.floor(Date.now() / 1000),
 ) => typeof stringOrNumber === 'string'
-	? startSeconds + Math.floor(ms(stringOrNumber) / 1000)
-	: Math.floor(stringOrNumber)
+  ? startSeconds + Math.floor(ms(stringOrNumber) / 1000)
+  : Math.floor(stringOrNumber)
 
 /**
 	 * Create a token to use as a signature in URLs
@@ -49,46 +49,46 @@ export const durationOrTimestampToSeconds = (
 	 * @returns {string}
 	 */
 export const createSignatureToken = (path, {
-	secret = process.env.FAVICONKIT_SECRET,
-	expires = Number.MAX_SAFE_INTEGER,
+  secret = process.env.FAVICONKIT_SECRET,
+  expires = Number.MAX_SAFE_INTEGER,
 } = {}) => {
-	expires = durationOrTimestampToSeconds(expires)
-	const hashable = secret + path + expires
-	return md5Base64(hashable)
-		.replaceAll('+', '-')
-		.replaceAll('/', '_')
-		.replaceAll('=', '')
+  expires = durationOrTimestampToSeconds(expires)
+  const hashable = secret + path + expires
+  return md5Base64(hashable)
+    .replaceAll('+', '-')
+    .replaceAll('/', '_')
+    .replaceAll('=', '')
 }
 
 export const createUrl = (path, {
-	account = process.env.FAVICONKIT_ACCOUNT,
-	secret = process.env.FAVICONKIT_SECRET,
-	expires = process.env.FAVICONKIT_EXPIRE || (Number.MAX_SAFE_INTEGER / 1000),
-	domain = process.env.FAVICONKIT_DOMAIN || 'faviconkit.com',
-	https = true,
+  account = process.env.FAVICONKIT_ACCOUNT,
+  secret = process.env.FAVICONKIT_SECRET,
+  expires = process.env.FAVICONKIT_EXPIRE || (Number.MAX_SAFE_INTEGER / 1000),
+  domain = process.env.FAVICONKIT_DOMAIN || 'faviconkit.com',
+  https = true,
 } = {}) => {
-	const signatureArgs = secret
-		? `?token=${createSignatureToken(path, {secret, expires})}&expires=${durationOrTimestampToSeconds(expires)}`
-		: ''
-	const scheme = https ? 'https' : 'http'
-	return new URL(`${path}${signatureArgs}`, `${scheme}://${account}.${domain}/`).href
+  const signatureArgs = secret
+    ? `?token=${createSignatureToken(path, {secret, expires})}&expires=${durationOrTimestampToSeconds(expires)}`
+    : ''
+  const scheme = https ? 'https' : 'http'
+  return new URL(`${path}${signatureArgs}`, `${scheme}://${account}.${domain}/`).href
 }
 
 export const iconUrl = (urlOrHostname, size, options) => {
-	const hostname = urlOrHostname.includes('/')
-		? new URL(urlOrHostname).hostname
-		: urlOrHostname
-	return createUrl(`/${hostname}/${size}`, options)
+  const hostname = urlOrHostname.includes('/')
+    ? new URL(urlOrHostname).hostname
+    : urlOrHostname
+  return createUrl(`/${hostname}/${size}`, options)
 }
 
 const createFaviconKitApi = defaultOptions => {
-	if (!(defaultOptions?.account || process.env.FAVICONKIT_ACCOUNT)) {
-		throw new TypeError(`@faviconkit/api: Expected \`account\` to be a String, got \`${typeof defaultOptions?.account}\`. You can either pass \`account\` as a function argument or set the \`FAVICONKIT_ACCOUNT\` environment variable.`)
-	}
+  if (!(defaultOptions?.account || process.env.FAVICONKIT_ACCOUNT)) {
+    throw new TypeError(`@faviconkit/api: Expected \`account\` to be a String, got \`${typeof defaultOptions?.account}\`. You can either pass \`account\` as a function argument or set the \`FAVICONKIT_ACCOUNT\` environment variable.`)
+  }
 
-	return {
-		iconUrl: (path, size, options) => iconUrl(path, size, {...defaultOptions, ...options}),
-	}
+  return {
+    iconUrl: (path, size, options) => iconUrl(path, size, {...defaultOptions, ...options}),
+  }
 }
 
 export default createFaviconKitApi
