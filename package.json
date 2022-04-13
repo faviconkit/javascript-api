@@ -1,11 +1,19 @@
 {
   "name": "@faviconkit/api",
   "description": "Get and embed high quality Favicons from any web site with this simple, reliable API.",
+  "homepage": "https://faviconkit.com/?ref=npm",
   "version": "0.0.0",
   "main": "./src/api.js",
   "author": {
     "name": "Andreas Pizsa",
     "url": "https://faviconkit.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faviconkit/javascript-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/faviconkit/javascript-api/issues"
   },
   "keywords": [
     "favicon",
