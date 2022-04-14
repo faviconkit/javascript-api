@@ -24,8 +24,9 @@ export const md5Base64 = input => btoa(md5(input, {asString: true}))
  * @param {string|number} stringOrNumber - a string or a number a target time.
  * 				In case of a string, that’s a time offset can be '1 minute', '1m', '2 weeks' or similar;
  * 				see the [ms](https://www.npmjs.com/package/ms) package for valid values.
- * @param {number} startSeconds	- The start time, in seconds, to which to add the offset;
- * 				defaults to the current time.
+ *        For numbers, it’s an absolute Unix timestamp (seconds since Jan 01 1970)
+ * @param {number} startSeconds	- The start time, in seconds, to which to add the string offset;
+ * 				defaults to the current time. Ignored if `stringOrNumber` is a number.
  *
  * @example
  * ```js
