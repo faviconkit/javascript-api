@@ -10,6 +10,8 @@
 
 [Favicon Kit](https://faviconkit.com/?ref=readme) is the easiest way to grab high quality Favicons from any web site and embed them in your own app.
 
+It does all the heavy lifting of fetching Favicons from the world’s websites, and then distributes icons globally for instant, easy and privacy-friendly access.
+
 Here are some of its fabulous features:
 
 ### Favicon Kit Features
