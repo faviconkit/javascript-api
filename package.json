@@ -19,6 +19,9 @@
     "favicon",
     "icon"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "md5": "^2.3.0",
     "ms": "^2.1.3"
